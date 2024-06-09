@@ -1,21 +1,21 @@
-import React from 'react';
-import { Menu } from '@headlessui/react';
-import { cn } from '../../lib/cn';
-import { makeClassName } from '../../lib/make-class-name';
-import { useDropdown } from './dropdown-context';
+import React from "react";
+import { Menu } from "@headlessui/react";
+import { cn } from "../../lib/cn";
+import { makeClassName } from "../../lib/make-class-name";
+import { useDropdown } from "./dropdown-context";
 
 export const dropdownItemStyles = {
   rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-[4px]',
-    lg: 'rounded-md',
-    xl: 'rounded-lg',
+    none: "ac-rounded-none",
+    sm: "ac-rounded-sm",
+    md: "ac-rounded-[4px]",
+    lg: "ac-rounded-md",
+    xl: "ac-rounded-lg",
   },
 };
 
 export type DropdownItemProps = {
-  as?: 'button' | 'li';
+  as?: "button" | "li";
   className?: string;
   activeClassName?: string;
   disabledClassName?: string;
@@ -29,7 +29,7 @@ export const DropdownItem = React.forwardRef<
 >(
   (
     {
-      as = 'button',
+      as = "button",
       className,
       children,
       disabled,
@@ -47,12 +47,12 @@ export const DropdownItem = React.forwardRef<
         {({ active, disabled }) => (
           <Component
             ref={ref}
-            {...(Component === 'button' && { type: 'button' })}
+            {...(Component === "button" && { type: "button" })}
             className={cn(
               makeClassName(`dropdown-item`),
-              'flex w-full items-center px-3 py-1.5',
+              "ac-flex ac-w-full ac-items-center ac-px-3 ac-py-1.5",
               rounded && dropdownItemStyles.rounded[rounded],
-              active && ['bg-muted/70', activeClassName],
+              active && ["bg-muted/70", activeClassName],
               disabled && disabledClassName,
               className
             )}
@@ -66,4 +66,4 @@ export const DropdownItem = React.forwardRef<
   }
 );
 
-DropdownItem.displayName = 'DropdownItem';
+DropdownItem.displayName = "DropdownItem";

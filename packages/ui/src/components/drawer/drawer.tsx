@@ -1,42 +1,42 @@
-import React, { Fragment } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
-import { cn } from '../../lib/cn';
-import { makeClassName } from '../../lib/make-class-name';
+import React, { Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { cn } from "../../lib/cn";
+import { makeClassName } from "../../lib/make-class-name";
 
 const drawerClasses = {
   overlay:
-    'fixed inset-0 cursor-pointer bg-black bg-opacity-60 transition-opacity dark:bg-opacity-80',
+    "ac-fixed ac-inset-0 ac-cursor-pointer ac-bg-black ac-bg-opacity-60 ac-transition-opacity dark:ac-bg-opacity-80",
   placement: {
-    top: '-translate-y-full',
-    right: 'translate-x-full',
-    bottom: 'translate-y-full',
-    left: '-translate-x-full',
+    top: "-ac-translate-y-full",
+    right: "ac-translate-x-full",
+    bottom: "ac-translate-y-full",
+    left: "-ac-translate-x-full",
   },
   // -> when placement is set to top | bottom
   sizeOfYAxisDrawer: {
-    sm: 'max-h-[30%]',
-    md: 'max-h-[35%]',
-    lg: 'max-h-[60%]',
-    xl: 'max-h-[80%]',
-    full: 'max-h-full',
+    sm: "ac-max-h-[30%]",
+    md: "ac-max-h-[35%]",
+    lg: "ac-max-h-[60%]",
+    xl: "ac-max-h-[80%]",
+    full: "ac-max-h-full",
   },
   // -> when placement is set to left | right
   sizeOfXAxisDrawer: {
-    sm: 'max-w-sm',
-    md: 'max-w-md',
-    lg: 'max-w-2xl',
-    xl: 'max-w-[60%]',
-    full: 'max-w-full',
+    sm: "ac-max-w-sm",
+    md: "ac-max-w-md",
+    lg: "ac-max-w-2xl",
+    xl: "ac-max-w-[60%]",
+    full: "ac-max-w-full",
   },
 };
 
 const CHECK_VALID_CUSTOM_SIZE = /(\d*px)|(\d*%)?/g;
 
 function isPlacementOnYAxis(placement: keyof typeof drawerClasses.placement) {
-  return ['top', 'bottom'].indexOf(placement) !== -1;
+  return ["top", "bottom"].indexOf(placement) !== -1;
 }
 
-export type DrawerSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
+export type DrawerSize = "sm" | "md" | "lg" | "xl" | "full";
 
 export type DrawerProps = {
   /** Whether the Drawer is open or not */
@@ -63,8 +63,8 @@ export type DrawerProps = {
 export function Drawer({
   isOpen,
   onClose,
-  size = 'md',
-  placement = 'right',
+  size = "md",
+  placement = "right",
   customSize,
   overlayClassName,
   containerClassName,
@@ -77,7 +77,7 @@ export function Drawer({
   if (customSize?.match(CHECK_VALID_CUSTOM_SIZE)) {
     const checkedCustomSizeValue =
       customSize?.match(CHECK_VALID_CUSTOM_SIZE) ?? [];
-    if (checkedCustomSizeValue[0] === '') {
+    if (checkedCustomSizeValue[0] === "") {
       console.warn(
         'customSize prop value is not valid. Please set customSize prop like -> customSize="500px" or customSize="50%"'
       );
@@ -90,18 +90,18 @@ export function Drawer({
         onClose={onClose}
         className={cn(
           makeClassName(`drawer-root`),
-          'fixed inset-0 z-[999] overflow-hidden',
+          "ac-fixed ac-inset-0 ac-z-[999] ac-overflow-hidden",
           className
         )}
       >
         <TransitionChild
           as={Fragment}
-          enter="ease-in-out duration-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in-out duration-300"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
+          enter="ac-ease-in-out ac-duration-300"
+          enterFrom="ac-opacity-0"
+          enterTo="ac-opacity-100"
+          leave="ac-ease-in-out ac-duration-300"
+          leaveFrom="ac-opacity-100"
+          leaveTo="ac-opacity-0"
         >
           <Dialog.Overlay
             className={cn(
@@ -115,30 +115,34 @@ export function Drawer({
           -> Please do not remove this Sr Only button.
           -> It's required this button to tackle the HeadlessUI's FocusTap Warnings
         */}
-        <button type="button" className="sr-only">
+        <button type="button" className="ac-sr-only">
           Sr Only
         </button>
         <TransitionChild
           as={Fragment}
-          enter="transform transition ease-in-out duration-300"
+          enter="ac-transform ac-transition ac-ease-in-out ac-duration-300"
           enterFrom={drawerClasses.placement[placement]}
           enterTo={
-            isPlacementOnYAxis(placement) ? 'translate-y-0' : 'translate-x-0'
+            isPlacementOnYAxis(placement)
+              ? "ac-translate-y-0"
+              : "ac-translate-x-0"
           }
-          leave="transform transition ease-in-out duration-300"
+          leave="ac-transform ac-transition ac-ease-in-out ac-duration-300"
           leaveFrom={
-            isPlacementOnYAxis(placement) ? 'translate-y-0' : 'translate-x-0'
+            isPlacementOnYAxis(placement)
+              ? "ac-translate-y-0"
+              : "ac-translate-x-0"
           }
           leaveTo={drawerClasses.placement[placement]}
         >
           <div
             className={cn(
               makeClassName(`drawer-container`),
-              'fixed h-full w-full break-words bg-background shadow-xl',
-              placement === 'top' && 'top-0',
-              placement === 'right' && 'inset-y-0 right-0',
-              placement === 'bottom' && 'bottom-0',
-              placement === 'left' && 'inset-y-0 left-0',
+              "ac-fixed ac-h-full ac-w-full ac-break-words ac-bg-background ac-shadow-xl",
+              placement === "top" && "ac-top-0",
+              placement === "right" && "ac-inset-y-0 ac-right-0",
+              placement === "bottom" && "ac-bottom-0",
+              placement === "left" && "ac-inset-y-0 ac-left-0",
               !customSize && [
                 isPlacementOnYAxis(placement)
                   ? drawerClasses.sizeOfYAxisDrawer[size]
@@ -150,10 +154,10 @@ export function Drawer({
               style: {
                 maxHeight: isPlacementOnYAxis(placement)
                   ? customSize
-                  : 'inherit',
+                  : "ac-inherit",
                 maxWidth: !isPlacementOnYAxis(placement)
                   ? customSize
-                  : 'inherit',
+                  : "ac-inherit",
               },
             })}
           >
@@ -165,4 +169,4 @@ export function Drawer({
   );
 }
 
-Drawer.displayName = 'Drawer';
+Drawer.displayName = "Drawer";

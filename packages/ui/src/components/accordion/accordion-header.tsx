@@ -1,7 +1,7 @@
-import React from 'react';
-import { useAccordion } from './accordion-context';
-import { makeClassName } from '../../lib/make-class-name';
-import { cn } from '../../lib/cn';
+import React from "react";
+import { useAccordion } from "./accordion-context";
+import { makeClassName } from "../../lib/make-class-name";
+import { cn } from "../../lib/cn";
 
 type AccordionHeaderProps = {
   className?: string;
@@ -15,7 +15,7 @@ export const AccordionHeader = React.forwardRef<
   AccordionHeaderProps
 >(({ children, className, ...props }, ref) => {
   const { isOpen, toggle } = useAccordion();
-  const isChildrenFunction = typeof children === 'function';
+  const isChildrenFunction = typeof children === "function";
 
   return (
     <button
@@ -23,8 +23,8 @@ export const AccordionHeader = React.forwardRef<
       onClick={() => toggle()}
       className={cn(
         makeClassName(`accordion-header`),
-        'block w-full',
-        className,
+        "ac-block ac-w-full",
+        className
       )}
       {...props}
     >
@@ -33,4 +33,4 @@ export const AccordionHeader = React.forwardRef<
   );
 });
 
-AccordionHeader.displayName = 'AccordionHeader';
+AccordionHeader.displayName = "AccordionHeader";

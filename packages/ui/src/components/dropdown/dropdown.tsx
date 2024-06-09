@@ -1,5 +1,5 @@
-import React from 'react';
-import { Menu } from '@headlessui/react';
+import React from "react";
+import { Menu } from "@headlessui/react";
 import {
   type Placement,
   flip,
@@ -7,15 +7,15 @@ import {
   offset,
   autoUpdate,
   useFloating,
-} from '@floating-ui/react';
-import { cn } from '../../lib/cn';
-import { ExtractProps } from '../../lib/extract-props';
-import { makeClassName } from '../../lib/make-class-name';
-import { dropdownStyles } from '../../lib/dropdown-list-style';
-import { DropdownTrigger } from './dropdown-trigger';
-import { DropdownMenu } from './dropdown-menu';
-import { DropdownItem } from './dropdown-item';
-import { DropdownProvider } from './dropdown-context';
+} from "@floating-ui/react";
+import { cn } from "../../lib/cn";
+import { ExtractProps } from "../../lib/extract-props";
+import { makeClassName } from "../../lib/make-class-name";
+import { dropdownStyles } from "../../lib/dropdown-list-style";
+import { DropdownTrigger } from "./dropdown-trigger";
+import { DropdownMenu } from "./dropdown-menu";
+import { DropdownItem } from "./dropdown-item";
+import { DropdownProvider } from "./dropdown-context";
 
 export type DropdownProps = ExtractProps<typeof Menu> & {
   inPortal?: boolean;
@@ -28,9 +28,9 @@ export type DropdownProps = ExtractProps<typeof Menu> & {
 
 export function Dropdown({
   inPortal = true,
-  placement = 'bottom-start',
-  rounded = 'md',
-  shadow = 'md',
+  placement = "bottom-start",
+  rounded = "md",
+  shadow = "md",
   children,
   className,
 }: DropdownProps) {
@@ -54,8 +54,8 @@ export function Dropdown({
         as="div"
         ref={refs.setReference}
         className={cn(
-          makeClassName(`dropdown-root inline-block`),
-          'relative',
+          makeClassName(`dropdown-root ac-inline-block`),
+          "ac-relative",
           className
         )}
       >
@@ -84,4 +84,4 @@ Dropdown.Trigger = DropdownTrigger;
 Dropdown.Menu = DropdownMenu;
 Dropdown.Item = DropdownItem;
 
-Dropdown.displayName = 'Dropdown';
+Dropdown.displayName = "Dropdown";
